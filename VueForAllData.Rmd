@@ -34,7 +34,7 @@ generate_Gender <- function(n) {
 }
 
 generate_Ethnicity <- function(n) {
-  ethnicities = c("American Indian or Alaska Native", "Asian", "Black or African American", "Hispanic or Latino", "Native Hawaiian or Other Pacific Islander", "White")
+  ethnicities = c("Indigenous Peoples", "Asian", "Black or African American", "Hispanic or Latino", "Native Hawaiian or Other Pacific Islander", "White")
   Ethnicity <- sample(ethnicities, size=n, replace=TRUE)
   return(Ethnicity)
 }
