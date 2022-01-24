@@ -104,10 +104,7 @@ The data will consist of:
 
 ```{r}
 # check if data already exists
-if (file.exists("gamerProfile-data.csv")){
-  print("file already exists")
-} else {
-  # create the data
+# create the data
   N = 5000
   
   col_names <- c("Age", "Sex", "Gender", "Ethnicity", "HoursPlayedWeekly", "MostUsedPlatform", "FavouriteGame", "FavouriteGenre", "ColourAnomaly", "ColourAnomalyStrength")
@@ -132,8 +129,6 @@ if (file.exists("gamerProfile-data.csv")){
   data$ColourAnomalyStrength <- sample(c("weak", "med", "strong"), N, replace = TRUE) # randomly assign strength
   data$ColourAnomalyStrength[!endsWith(data$ColourAnomaly, 'A')] <- "colourblind"
   data$ColourAnomalyStrength[data$ColourAnomaly == "Norm"] <- NA
-  
-}
 
 write.csv(data, "gamerProfile-data.csv")
 
@@ -178,7 +173,7 @@ settings.df$sensitiveContentFilter <- sample(c(0,1,2), size=nrow(videogame.df), 
 settings.df$gameSpeed <- sample(c(0,1,2), size=nrow(videogame.df), replace=TRUE)
 settings.df$textSpeed <- sample(c(0,1,2), size=nrow(videogame.df), replace=TRUE)
 
-write.csv(data, "gameSettings-data.csv")
+write.csv(settings.df, "gameSettings-data.csv")
 ```
 
 # Game Ratings Data
@@ -197,7 +192,7 @@ ratings.df$ratings[which(ratings.df$ratings >100)] = 100
 min(ratings.df$ratings)
 max(ratings.df$ratings)
 
-write.csv(data, "gameRatings-data.csv")
+write.csv(ratings.df, "gameRatings-data.csv")
 
 ```
 
