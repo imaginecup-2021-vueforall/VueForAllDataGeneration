@@ -181,4 +181,23 @@ settings.df$textSpeed <- sample(c(0,1,2), size=nrow(videogame.df), replace=TRUE)
 write.csv(data, "gameSettings-data.csv")
 ```
 
-N
+# Game Ratings Data
+```{r}
+# great a dataset with game names and accessibility rating
+# create a dataset with video games and (simulated) settings
+# 0 = No; 1 = Limited; 2 = Full
+ratings.df <- videogame.df %>% select(Title)
+ratings.df$ratings <- rnorm(nrow(ratings.df), mean=60, sd=10)
+ratings.df$ratings <- ceiling(ratings.df$ratings)
+
+# just cause lazy code, make sure min isn't under 0 and max isn't above 100
+ratings.df$ratings[which(ratings.df$ratings <0)] = 0
+ratings.df$ratings[which(ratings.df$ratings >100)] = 100
+
+min(ratings.df$ratings)
+max(ratings.df$ratings)
+
+write.csv(data, "gameRatings-data.csv")
+
+```
+
